@@ -239,6 +239,7 @@ De onafhankelijke variabele / de factor met herhaalde metingen op de x-as en de 
 ### Referenties
 ---
 - Conover,W. J. (1999). *Practical nonparametric Statistics, 3rd. Edition*, Wiley.
+- Field, A., van Doorn, J. B., & Wagenmakers, E.-J. (2025). Discovering statistics using JASP. Sage Publishing.
 - Morey, R. D. (2008) Confidence intervallen from Normalized Data: A correction to Cousineau (2005). Tutorial in *Quantatitative Methods for Psychology, 4*(2), 61-64.
 - Loftus, G. R., & Masson, M. E. J. (1994). Using confidence intervallen in within-subject designs. *Psychonomic Bulletin and Review, 1*, 476–490.
 

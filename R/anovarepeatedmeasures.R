@@ -1006,7 +1006,7 @@ AnovaRepeatedMeasuresInternal <- function(jaspResults, dataset = NULL, options) 
         if (options$postHocCorrectionScheffe || options$postHocCorrectionTukey) {
           cors <- paste(c("Tukey", "Scheffe")[c(options$postHocCorrectionTukey, options$postHocCorrectionScheffe)], collapse = " and ")
 
-          postHocContainer[[thisVarNameRef]]$addFootnote(gettextf("%s corrected p-values are not appropriate for repeated measures post-hoc tests (Maxwell, 1980; Field, 2012).", cors))
+          postHocContainer[[thisVarNameRef]]$addFootnote(gettextf("%s corrected p-values are not appropriate for repeated measures post-hoc tests (Maxwell, 1980; Field, 2025).", cors))
         }
       }
 

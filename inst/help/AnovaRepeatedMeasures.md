@@ -243,7 +243,7 @@ The independent variable / repeated measures factor on the x-axis and dependent 
 ### References
 ---
 - Conover,W. J. (1999). *Practical nonparametric Statistics, 3rd. Edition*, Wiley.
-- Field, A., Miles, J., & Field, Z. (2012). Discovering statistics using R. Sage Publishing.
+- Field, A., van Doorn, J. B., & Wagenmakers, E.-J. (2025). Discovering statistics using JASP. Sage Publishing.
 - Kroes, A. D. A., & Finley, J. R. (2023). Demystifying omega squared: Practical guidance for effect size in common analysis of variance designs. Psychological Methods.
 - Loftus, G. R., & Masson, M. E. J. (1994). Using confidence intervals in within-subject designs. *Psychonomic Bulletin and Review, 1*, 476–490.
 - Maxwell, S. E. (1980). Pairwise Multiple Comparisons in Repeated Measures Designs. *Journal of Educational Statistics*, 5(3), 269–287.
