@@ -1610,6 +1610,7 @@ AnovaRepeatedMeasuresInternal <- function(jaspResults, dataset = NULL, options) 
   simpleEffectsTable$addColumnInfo(name = "SumSq",  type = "number",  title = gettext("Sum of Squares"))
   simpleEffectsTable$addColumnInfo(name = "Df",     type = "integer", title = gettext("df"))
   simpleEffectsTable$addColumnInfo(name = "MeanSq", type = "number",  title = gettext("Mean Square"))
+  simpleEffectsTable$addColumnInfo(name = "fullAnovaMS", type = "number",  title = gettext("Mean Square Error"))
   simpleEffectsTable$addColumnInfo(name = "F",      type = "number",  title = gettext("F"))
   simpleEffectsTable$addColumnInfo(name = "p",      type = "pvalue",  title = gettext("p"))
 
@@ -1718,7 +1719,7 @@ AnovaRepeatedMeasuresInternal <- function(jaspResults, dataset = NULL, options) 
       MS <- anovaResult[["Mean Sq"]] <- anovaResult[["Sum Sq"]] /  df
       fStat <- MS / fullAnovaMS
       p <- pf(fStat, df, fullAnovaDf, lower.tail = FALSE)
-      thisRow <- c(anovaResult[["Sum Sq"]], MS, df, fStat, p)
+      thisRow <- c(anovaResult[["Sum Sq"]], MS, df, fullAnovaMS, fStat, p)
     } else {
 
       anovaResult <-  .rmAnovaComputeResults(simpleDataset, simpleOptions, returnResultsEarly = TRUE)$model[simpleMainEffectFactorBase64, ]
@@ -1732,11 +1733,11 @@ AnovaRepeatedMeasuresInternal <- function(jaspResults, dataset = NULL, options) 
       MS <- anovaResult[["Mean Sq"]] <- anovaResult[["Sum Sq"]] /  df
       fStat <- MS / fullAnovaMS
       p <- pf(fStat, df, fullAnovaDf, lower.tail = FALSE)
-      thisRow <- c(anovaResult[["Sum Sq"]], MS, df, fStat, p)
+      thisRow <- c(anovaResult[["Sum Sq"]], MS, df, fullAnovaMS, fStat, p)
     }
 
 
-    simpleEffectResult[i, c("SumSq", "MeanSq", "Df", "F", "p")] <- thisRow
+    simpleEffectResult[i, c("SumSq", "MeanSq", "Df", "fullAnovaMS", "F", "p")] <- thisRow
   }
 
   if (!is.null(emptyCaseIndices)) {

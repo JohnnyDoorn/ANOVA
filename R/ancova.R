@@ -1509,7 +1509,8 @@ AncovaInternal <- function(jaspResults, dataset = NULL, options) {
 
 
   simpleEffectsTable$addColumnInfo(name = "Sum Sq",  type = "number",  title = gettext("Sum of Squares"))
-  simpleEffectsTable$addColumnInfo(name = "Df",      type = "integer", title = gettext("df"))
+  simpleEffectsTable$addColumnInfo(name = "Df",      type = "integer", title = gettext("df[1]"))
+  simpleEffectsTable$addColumnInfo(name = "DfError", type = "integer", title = gettext("df[2]"))
   simpleEffectsTable$addColumnInfo(name = "Mean Sq", type = "number",  title = gettext("Mean Square"))
   simpleEffectsTable$addColumnInfo(name = "F value", type = "number",  title = gettext("F"))
   simpleEffectsTable$addColumnInfo(name = "Pr(>F)",  type = "pvalue",  title = gettext("p"))
@@ -1590,6 +1591,7 @@ AncovaInternal <- function(jaspResults, dataset = NULL, options) {
   simpleEffectResult[["F value"]] <- simpleEffectResult[["Mean Sq"]] / fullAnovaMS
   simpleEffectResult[["Pr(>F)"]] <-  pf(simpleEffectResult[["F value"]], simpleEffectResult[["Df"]],
                                         fullAnovaDf, lower.tail = FALSE)
+  simpleEffectResult[["DfError"]] <-  fullAnovaDf
 
   simpleEffectsTable$setData(simpleEffectResult)
 
