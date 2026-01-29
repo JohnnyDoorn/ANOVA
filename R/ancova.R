@@ -1293,7 +1293,8 @@ AncovaInternal <- function(jaspResults, dataset = NULL, options) {
     return()
 
   assumptionsContainer <- createJaspContainer(title = gettext("Assumption Checks"),
-                                              dependencies = c("homogeneityTests", "qqPlot"))
+                                              dependencies = c("homogeneityTests", "qqPlot",
+                                                               "qqPlotCi", "qqPlotCiLevel"))
 
   anovaContainer[["assumptionsContainer"]] <- assumptionsContainer
 
