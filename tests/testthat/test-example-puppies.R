@@ -71,6 +71,13 @@ test_that("Anova results match", {
      0.0450492023935578, 6.2, 0.787644385009867, 0.773233171256257
     ))
 
+  table <- results[["results"]][["anovaContainer"]][["collection"]][["anovaContainer_marginalMeansContainer"]][["collection"]][["anovaContainer_marginalMeansContainer_jaspColumn1"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+    list("TRUE", 0.627162924074226, "15 mins", 1.83352937473546, 3.2, 4.56647062526454,
+     "FALSE", 0.627162924074226, "30 mins", 3.63352937473546, 5,
+     6.36647062526453, "FALSE", 0.627162924074226, "No puppies",
+     0.833529374735462, 2.2, 3.56647062526454))
+
   table <- results[["results"]][["anovaContainer"]][["collection"]][["anovaContainer_postHocContainer"]][["collection"]][["anovaContainer_postHocContainer_postHocDunnettContainer"]][["collection"]][["anovaContainer_postHocContainer_postHocDunnettContainer_jaspColumn1"]][["data"]]
   jaspTools::expect_equal_tables(table,
     list(0.886942313043338, "30 mins - 15 mins", -0.419635113995323, 1.8,

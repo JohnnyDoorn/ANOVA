@@ -19,6 +19,12 @@ test_that("AnovaRepeatedMeasures results match", {
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-1_q-q-plot")
 
+  table <- results[["results"]][["rmAnovaContainer"]][["collection"]][["rmAnovaContainer_assumptionsContainer"]][["collection"]][["rmAnovaContainer_assumptionsContainer_sphericityTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+    list("FALSE", 0.532845552798474, 0.66576361409737, 0.333333333333333,
+     0.136248029372535, 11.4059814340564, "Entity", 5, 0.0468458123067897
+    ))
+
   table <- results[["results"]][["rmAnovaContainer"]][["collection"]][["rmAnovaContainer_betweenTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
     list("TRUE", "", 2.48214285714286, "", 17.375, "Residuals", 7))
@@ -49,6 +55,15 @@ test_that("AnovaRepeatedMeasures results match", {
      "Shapeshifter", 5.75, 8, 2.91547594742265, 1.03077640640442,
      0.507039295203939, "Alien", 8.125, 8, 2.23207142742853, 0.789156421213727,
      0.27471648337582))
+
+  table <- results[["results"]][["rmAnovaContainer"]][["collection"]][["rmAnovaContainer_marginalMeansContainer"]][["collection"]][["rmAnovaContainer_marginalMeansContainer_Entity"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+    list("TRUE", "Mannequin", 0.971697704315199, 1.82730004315924, 4.125,
+     6.42269995684075, "FALSE", "Human", 0.647798469543466, 2.71820002877283,
+     4.25, 5.78179997122717, "FALSE", "Shapeshifter", 1.03077640640441,
+     3.31260111144646, 5.75, 8.18739888855354, "FALSE", "Alien",
+     0.789156421213727, 6.25894158809785, 8.125, 9.99105841190215
+    ))
 
   table <- results[["results"]][["rmAnovaContainer"]][["collection"]][["rmAnovaContainer_postHocStandardContainer"]][["collection"]][["rmAnovaContainer_postHocStandardContainer_Entity1"]][["data"]]
   jaspTools::expect_equal_tables(table,
