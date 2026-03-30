@@ -926,7 +926,7 @@ AnovaRepeatedMeasuresInternal <- function(jaspResults, dataset = NULL, options) 
   postHocContainer <- createJaspContainer(title = gettext("Post Hoc Tests"))
   postHocContainer$dependOn(c("postHocTerms", "postHocEffectSize", "postHocCorrectionBonferroni",
                               "postHocCorrectionHolm", "postHocCorrectionScheffe", "postHocCorrectionTukey",
-                              "postHocSignificanceFlag", "postHocCi", "postHocLetterAlpha", "postHocLetterTable",
+                              "postHocCorrectionFdr", "postHocSignificanceFlag", "postHocCi", "postHocLetterAlpha", "postHocLetterTable",
                               "postHocCiLevel", "postHocConditionalTable"))
 
   rmAnovaContainer[["postHocStandardContainer"]] <- postHocContainer
@@ -998,6 +998,9 @@ AnovaRepeatedMeasuresInternal <- function(jaspResults, dataset = NULL, options) 
       resultPostHoc[["bonferroni"]] <-  summary(pairs(referenceGrid[[thisVarName]], adjust="bonferroni",
                                                 by = byVariable[termIndex]))[["p.value"]]
 
+      resultPostHoc[["fdr"]] <-  summary(pairs(referenceGrid[[thisVarName]], adjust="fdr",
+                                                by = byVariable[termIndex]))[["p.value"]]
+
       resultPostHoc[["cohenD"]] <- effectSizeResult[["effect.size"]]
       resultPostHoc[["cohenD_LowerCI"]] <- effectSizeResult[["lower.CL"]]
       resultPostHoc[["cohenD_UpperCI"]] <- effectSizeResult[["upper.CL"]]
@@ -1043,7 +1046,7 @@ AnovaRepeatedMeasuresInternal <- function(jaspResults, dataset = NULL, options) 
 
       if (options$postHocSignificanceFlag)
         .anovaAddSignificanceSigns(someTable = postHocContainer[[thisVarNameRef]],
-                                   allPvalues = resultPostHoc[c("bonferroni", "scheffe", "tukey", "holm")],
+                                   allPvalues = resultPostHoc[c("bonferroni", "scheffe", "tukey", "holm", "fdr")],
                                    resultRowNames = rownames(resultPostHoc))
 
     }
