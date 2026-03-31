@@ -998,7 +998,7 @@ AnovaRepeatedMeasuresInternal <- function(jaspResults, dataset = NULL, options) 
       resultPostHoc[["bonferroni"]] <-  summary(pairs(referenceGrid[[thisVarName]], adjust="bonferroni",
                                                 by = byVariable[termIndex]))[["p.value"]]
 
-      resultPostHoc[["fdr"]] <-  summary(pairs(referenceGrid[[thisVarName]], adjust="fdr",
+      resultPostHoc[["BH"]] <-  summary(pairs(referenceGrid[[thisVarName]], adjust="BH",
                                                 by = byVariable[termIndex]))[["p.value"]]
 
       resultPostHoc[["cohenD"]] <- effectSizeResult[["effect.size"]]
@@ -1046,7 +1046,7 @@ AnovaRepeatedMeasuresInternal <- function(jaspResults, dataset = NULL, options) 
 
       if (options$postHocSignificanceFlag)
         .anovaAddSignificanceSigns(someTable = postHocContainer[[thisVarNameRef]],
-                                   allPvalues = resultPostHoc[c("bonferroni", "scheffe", "tukey", "holm", "fdr")],
+                                   allPvalues = resultPostHoc[c("bonferroni", "scheffe", "tukey", "holm", "BH")],
                                    resultRowNames = rownames(resultPostHoc))
 
     }
